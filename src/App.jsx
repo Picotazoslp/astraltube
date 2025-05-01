@@ -15,7 +15,7 @@ export default function App() {
     {
       nombre: "Personal",
       descripcion: "6 alitas, hasta 2 salsas, 1 porción de papas",
-      imagen: "/combo-personal.jpg.png",
+      imagen: "/combo-personal.jpg",
       precio: 5600,
       salsas: 2,
       papas: 1,
@@ -23,7 +23,7 @@ export default function App() {
     {
       nombre: "Para 2",
       descripcion: "12 alitas, hasta 2 salsas, 2 porciones de papas",
-      imagen: "/combo-dos.jpg.png",
+      imagen: "/combo-dos.jpg",
       precio: 8500,
       salsas: 2,
       papas: 2,
@@ -31,7 +31,7 @@ export default function App() {
     {
       nombre: "Familiar",
       descripcion: "30 alitas, hasta 5 salsas, 5 porciones de papas",
-      imagen: "/combo-familiar.jpg.png",
+      imagen: "/combo-familiar.jpg",
       precio: 20000,
       salsas: 5,
       papas: 5,
