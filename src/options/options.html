@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstralTube Settings</title>
+    <link rel="stylesheet" href="options.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip Navigation for Screen Readers -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <!-- Live Region for Status Updates -->
+    <div aria-live="polite" aria-atomic="true" class="sr-only" id="status-region"></div>
+    <div aria-live="assertive" aria-atomic="true" class="sr-only" id="alert-region"></div>
+    <div class="options-container">
+        <!-- Header -->
+        <header class="options-header">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 24 24" class="astral-logo">
+                            <defs>
+                                <linearGradient id="astralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="100%" style="stop-color:#764ba2"/>
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#astralGradient)" d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            <circle cx="12" cy="12" r="3" fill="white" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1>AstralTube Settings</h1>
+                        <p>Ultimate YouTube Manager v3.0.0</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="exportBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.89,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3C1.89,20 1,19.11 1,18Z"/>
+                        </svg>
+                        Export Settings
+                    </button>
+                    <button class="btn btn-secondary" id="importBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                        Import Settings
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="options-nav" role="navigation" aria-label="Settings sections">
+            <div class="nav-container" role="tablist">
+                <button class="nav-item active" data-section="general" role="tab" aria-selected="true" aria-controls="general" id="tab-general" tabindex="0">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.98C19.47,12.66 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.02L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.65 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.02C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.66 4.57,12.98L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.98Z"/>
+                    </svg>
+                    General
+                </button>
+                <button class="nav-item" data-section="playlists" role="tab" aria-selected="false" aria-controls="playlists" id="tab-playlists" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M15,6H3V8H15V6M15,10H3V12H15V10M3,16H11V14H3V16M17,6V14.18C16.69,14.07 16.35,14 16,14A3,3 0 0,0 13,17A3,3 0 0,0 16,20A3,3 0 0,0 19,17V8H22V6H17Z"/>
+                    </svg>
+                    Playlists
+                </button>
+                <button class="nav-item" data-section="subscriptions" role="tab" aria-selected="false" aria-controls="subscriptions" id="tab-subscriptions" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                    </svg>
+                    Subscriptions
+                </button>
+                <button class="nav-item" data-section="interface" role="tab" aria-selected="false" aria-controls="interface" id="tab-interface" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M3,3H11V11H3V3M13,3H21V11H13V3M3,13H11V21H3V13M13,13H21V21H13V13Z"/>
+                    </svg>
+                    Interface
+                </button>
+                <button class="nav-item" data-section="sync" role="tab" aria-selected="false" aria-controls="sync" id="tab-sync" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                    </svg>
+                    Sync & Backup
+                </button>
+                <button class="nav-item" data-section="privacy" role="tab" aria-selected="false" aria-controls="privacy" id="tab-privacy" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V18H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
+                    </svg>
+                    Privacy
+                </button>
+                <button class="nav-item" data-section="advanced" role="tab" aria-selected="false" aria-controls="advanced" id="tab-advanced" tabindex="-1">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path fill="currentColor" d="M22.7 19L13.6 9.9C14.5 7.6 14 4.9 12.1 3C10.1 1 7.1 0.6 4.7 1.7L9 6L6 9L1.6 4.7C0.4 7.1 0.9 10.1 2.9 12.1C4.8 14 7.5 14.5 9.8 13.6L18.9 22.7C19.3 23.1 19.9 23.1 20.3 22.7L22.6 20.4C23.1 20 23.1 19.3 22.7 19Z"/>
+                    </svg>
+                    Advanced
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="options-main" id="main-content" role="main">
+            <!-- General Section -->
+            <section class="options-section active" id="general" role="tabpanel" aria-labelledby="tab-general">
+                <div class="section-header">
+                    <h2>General Settings</h2>
+                    <p>Configure basic AstralTube behavior and preferences</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Core Features</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="sidebarEnabled">Enable Sidebar</label>
+                                <p>Show the AstralTube sidebar on YouTube pages</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="sidebarEnabled" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="deckModeEnabled">Enable Deck Mode</label>
+                                <p>Enable TweetDeck-style multi-column view</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="deckModeEnabled">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoEnhance">Auto-enhance Pages</label>
+                                <p>Automatically add AstralTube features to YouTube pages</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoEnhance" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Notifications</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="notifications">Enable Notifications</label>
+                                <p>Show notifications for important events</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="notifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="notificationSounds">Notification Sounds</label>
+                                <p>Play sounds for notifications</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="notificationSounds">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Playlists Section -->
+            <section class="options-section" id="playlists" role="tabpanel" aria-labelledby="tab-playlists" aria-hidden="true">
+                <div class="section-header">
+                    <h2>Playlist Management</h2>
+                    <p>Configure playlist organization and management features</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Organization</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="nestedFolders">Enable Nested Folders</label>
+                                <p>Allow creating folders within folders for better organization</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="nestedFolders" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoSort">Auto-sort Playlists</label>
+                                <p>Automatically sort playlists by name, date, or custom order</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="autoSort" class="select">
+                                    <option value="none">No auto-sorting</option>
+                                    <option value="name">Sort by name</option>
+                                    <option value="date">Sort by date</option>
+                                    <option value="size">Sort by size</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Duration Calculator</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="showDuration">Show Duration by Default</label>
+                                <p>Automatically calculate and show playlist durations</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="showDuration" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="durationFormat">Duration Format</label>
+                                <p>Choose how to display playlist durations</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="durationFormat" class="select">
+                                    <option value="hms">Hours:Minutes:Seconds</option>
+                                    <option value="readable">Human readable (2h 30m)</option>
+                                    <option value="minutes">Total minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscriptions Section -->
+            <section class="options-section" id="subscriptions">
+                <div class="section-header">
+                    <h2>Subscription Management</h2>
+                    <p>Configure subscription organization and filtering</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Collections</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoCollections">Auto-create Collections</label>
+                                <p>Automatically create collections based on channel categories</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoCollections">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="healthMonitoring">Health Monitoring</label>
+                                <p>Monitor channel activity and health status</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="healthMonitoring" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Video Filtering</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="hideShorts">Hide YouTube Shorts</label>
+                                <p>Filter out YouTube Shorts from subscription feeds</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="hideShorts">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="hideWatched">Hide Watched Videos</label>
+                                <p>Hide videos you've already watched</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="hideWatched">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interface Section -->
+            <section class="options-section" id="interface">
+                <div class="section-header">
+                    <h2>Interface & Appearance</h2>
+                    <p>Customize the look and feel of AstralTube</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Theme</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="theme">Color Theme</label>
+                                <p>Choose your preferred color theme</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="theme" class="select">
+                                    <option value="auto">Auto (System)</option>
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="accentColor">Accent Color</label>
+                                <p>Choose your preferred accent color</p>
+                            </div>
+                            <div class="setting-control">
+                                <div class="color-picker">
+                                    <input type="color" id="accentColor" value="#667eea">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Layout</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="compactMode">Compact Mode</label>
+                                <p>Use a more compact layout to fit more content</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="compactMode">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="animations">Enable Animations</label>
+                                <p>Show smooth animations and transitions</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="animations" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sync Section -->
+            <section class="options-section" id="sync">
+                <div class="section-header">
+                    <h2>Sync & Backup</h2>
+                    <p>Manage data synchronization and backup settings</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Synchronization</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoSync">Auto-sync</label>
+                                <p>Automatically sync data with YouTube API</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoSync" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="syncInterval">Sync Interval</label>
+                                <p>How often to sync data automatically</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="syncInterval" class="select">
+                                    <option value="15">Every 15 minutes</option>
+                                    <option value="30" selected>Every 30 minutes</option>
+                                    <option value="60">Every hour</option>
+                                    <option value="180">Every 3 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Backup</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoBackup">Auto-backup</label>
+                                <p>Automatically create backups of your data</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoBackup" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div>
+                                    <label>Manual Backup</label>
+                                    <p>Create a backup of all your AstralTube data</p>
+                                </div>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn btn-secondary" id="createBackup">Create Backup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy Section -->
+            <section class="options-section" id="privacy">
+                <div class="section-header">
+                    <h2>Privacy & Security</h2>
+                    <p>Control your privacy and data security settings</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Data Collection</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="analytics">Usage Analytics</label>
+                                <p>Help improve AstralTube by sharing anonymous usage data</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="analytics" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="crashReports">Crash Reports</label>
+                                <p>Automatically send crash reports to help fix bugs</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="crashReports" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Data Security</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="encryptData">Encrypt Sensitive Data</label>
+                                <p>Encrypt sensitive data stored locally</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="encryptData">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div>
+                                    <label>Clear All Data</label>
+                                    <p>Remove all AstralTube data from this browser</p>
+                                </div>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn btn-danger" id="clearData">Clear All Data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Section -->
+            <section class="options-section" id="advanced">
+                <div class="section-header">
+                    <h2>Advanced Settings</h2>
+                    <p>Advanced configuration options for power users</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>Performance</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="virtualScrolling">Virtual Scrolling</label>
+                                <p>Use virtual scrolling for better performance with large lists</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="virtualScrolling" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="cacheSize">Cache Size (MB)</label>
+                                <p>Maximum amount of data to cache locally</p>
+                            </div>
+                            <div class="setting-control">
+                                <input type="number" id="cacheSize" class="input" value="50" min="10" max="500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Developer</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="debugMode">Debug Mode</label>
+                                <p>Enable debug logging and developer tools</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" id="debugMode">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div>
+                                    <label>Reset to Defaults</label>
+                                    <p>Reset all settings to their default values</p>
+                                </div>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn btn-secondary" id="resetSettings">Reset Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="options-footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 AstralTube Team. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#" id="helpLink">Help & Support</a>
+                        <a href="#" id="privacyLink">Privacy Policy</a>
+                        <a href="#" id="githubLink">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <button class="btn btn-secondary" id="resetAllBtn">Reset All</button>
+                    <button class="btn btn-primary" id="saveBtn">Save Changes</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Status Toast -->
+    <div class="toast" id="statusToast" style="display: none;">
+        <div class="toast-content">
+            <div class="toast-icon"></div>
+            <div class="toast-message"></div>
+        </div>
+    </div>
+
+    <script type="module" src="options-enhanced.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+{
+  "source": {
+    "include": [
+      "./src/",
+      "./README.md"
+    ],
+    "includePattern": "\\.(js|jsx)$",
+    "exclude": [
+      "./node_modules/",
+      "./dist/",
+      "./tests/",
+      "./src/**/*.test.js",
+      "./src/**/*.spec.js"
+    ],
+    "excludePattern": "(test|spec)\\.js$"
+  },
+  "opts": {
+    "destination": "./docs/",
+    "recurse": true,
+    "readme": "./README.md",
+    "verbose": true
+  },
+  "plugins": [
+    "plugins/markdown",
+    "plugins/summarize"
+  ],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "metadata": {
+    "title": "AstralTube v3 - API Documentation",
+    "version": "3.0.0"
+  },
+  "markdown": {
+    "parser": "gfm"
+  },
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "docdash": {
+    "static": true,
+    "sort": true,
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Namespaces",
+      "Global"
+    ],
+    "collapse": false,
+    "wrap": true,
+    "typedefs": true,
+    "removeQuotes": "none",
+    "scripts": [],
+    "menu": {
+      "GitHub": {
+        "href": "https://github.com/astraltube/extension",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "github-link"
+      },
+      "Homepage": {
+        "href": "https://astraltube.app",
+        "target": "_blank", 
+        "class": "menu-item",
+        "id": "homepage-link"
+      }
+    },
+    "meta": {
+      "title": "AstralTube v3 Documentation",
+      "description": "Complete API documentation for AstralTube v3 Chrome Extension",
+      "keyword": "youtube, chrome extension, playlist manager, documentation"
+    }
+  },
+  "extensions": {
+    "service-worker": {
+      "patterns": ["service-worker.js", "background.js"],
+      "tags": {
+        "@serviceWorker": "This is a Chrome Extension service worker"
+      }
+    },
+    "content-script": {
+      "patterns": ["content-script.js", "content.js"],
+      "tags": {
+        "@contentScript": "This is a Chrome Extension content script"
+      }
+    }
+  },
+  "customTags": [
+    {
+      "tag": "chromeAPI",
+      "value": {
+        "type": "PLAIN_TEXT",
+        "description": "Chrome Extension API usage"
+      }
+    },
+    {
+      "tag": "permission",
+      "value": {
+        "type": "PLAIN_TEXT", 
+        "description": "Required Chrome Extension permission"
+      }
+    },
+    {
+      "tag": "manifest",
+      "value": {
+        "type": "PLAIN_TEXT",
+        "description": "Manifest.json configuration requirement"
+      }
+    },
+    {
+      "tag": "youtube",
+      "value": {
+        "type": "PLAIN_TEXT",
+        "description": "YouTube-specific functionality"
+      }
+    },
+    {
+      "tag": "storage",
+      "value": {
+        "type": "PLAIN_TEXT",
+        "description": "Chrome storage API usage"
+      }
+    }
+  ],
+  "includeDate": true,
+  "sourceFiles": true,
+  "sourceRootPath": "./src/",
+  "configure": "./jsdoc.config.json"
+}

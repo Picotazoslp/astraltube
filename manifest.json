@@ -1,0 +1,132 @@
+{
+  "manifest_version": 3,
+  "name": "AstralTube: Ultimate YouTube Manager",
+  "version": "3.0.0",
+  "description": "The ultimate YouTube experience - manage playlists, organize subscriptions, and enhance your viewing with advanced tools and AI-powered features.",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "notifications",
+    "alarms",
+    "identity"
+  ],
+
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "https://m.youtube.com/*",
+    "https://www.googleapis.com/*"
+  ],
+
+  "background": {
+    "service_worker": "dist/src/background/service-worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "dist/src/content/content-script.js"
+      ],
+      "css": [
+        "dist/src/content/styles.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+
+  "action": {
+    "default_popup": "dist/src/popup/popup.html",
+    "default_title": "AstralTube - Ultimate YouTube Manager",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "options_ui": {
+    "page": "dist/src/options/options.html",
+    "open_in_tab": true
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/*",
+        "dist/src/content/sidebar.html",
+        "dist/src/content/deck-mode.html",
+        "assets/*"
+      ],
+      "matches": [
+        "https://www.youtube.com/*"
+      ]
+    }
+  ],
+
+  "externally_connectable": {
+    "matches": [
+      "https://www.youtube.com/*",
+      "https://youtube.com/*",
+      "https://m.youtube.com/*"
+    ]
+  },
+
+  "commands": {
+    "toggle-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+A",
+        "mac": "Command+Shift+A"
+      },
+      "description": "Toggle AstralTube sidebar"
+    },
+    "toggle-deck-mode": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
+      },
+      "description": "Toggle Deck Mode"
+    },
+    "quick-add": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Q",
+        "mac": "Command+Shift+Q"
+      },
+      "description": "Quick add to collection/playlist"
+    },
+    "focus-search": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Focus search in AstralTube"
+    }
+  },
+
+  "minimum_chrome_version": "88",
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; img-src 'self' https://i.ytimg.com https://yt3.ggpht.com https://www.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.googleapis.com https://accounts.google.com;"
+  },
+
+
+  "author": "AstralTube Team",
+  "homepage_url": "https://astraltube.app/",
+  "short_name": "AstralTube v3"
+}

@@ -1,0 +1,519 @@
+/* AstralTube v3 - Enhanced Content Script Styles with Better Scoping */
+
+/* ========================================
+   ENHANCED SCOPING TO PREVENT YOUTUBE CONFLICTS
+   ======================================== */
+
+/* Primary scope - ensures our styles don't get overridden by YouTube */
+.astraltube-scope,
+.astraltube-scope *,
+.astraltube-scope *::before,
+.astraltube-scope *::after {
+  /* Reset inheritance from YouTube */
+  all: unset;
+  box-sizing: border-box !important;
+  
+  /* Re-establish base properties */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.astraltube-scope {
+  /* Root scope styles */
+  display: block !important;
+  position: relative !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #111827 !important;
+  background: transparent !important;
+  z-index: 1000000 !important; /* Ensure we're above YouTube */
+  
+  /* CSS Custom Properties - Scoped to prevent conflicts */
+  --astral-primary: #667eea;
+  --astral-secondary: #764ba2;
+  --astral-accent: #f093fb;
+  --astral-gradient: linear-gradient(135deg, var(--astral-primary) 0%, var(--astral-secondary) 100%);
+  --astral-gradient-light: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  
+  /* Semantic Colors */
+  --astral-success: #10b981;
+  --astral-warning: #f59e0b;
+  --astral-error: #ef4444;
+  --astral-info: #3b82f6;
+  
+  /* Neutral Colors */
+  --astral-white: #ffffff;
+  --astral-gray-50: #f9fafb;
+  --astral-gray-100: #f3f4f6;
+  --astral-gray-200: #e5e7eb;
+  --astral-gray-300: #d1d5db;
+  --astral-gray-400: #9ca3af;
+  --astral-gray-500: #6b7280;
+  --astral-gray-600: #4b5563;
+  --astral-gray-700: #374151;
+  --astral-gray-800: #1f2937;
+  --astral-gray-900: #111827;
+  
+  /* Spacing */
+  --astral-space-1: 0.25rem;
+  --astral-space-2: 0.5rem;
+  --astral-space-3: 0.75rem;
+  --astral-space-4: 1rem;
+  --astral-space-5: 1.25rem;
+  --astral-space-6: 1.5rem;
+  --astral-space-8: 2rem;
+  
+  /* Border Radius */
+  --astral-radius-sm: 0.375rem;
+  --astral-radius-md: 0.5rem;
+  --astral-radius-lg: 0.75rem;
+  --astral-radius-xl: 1rem;
+  
+  /* Shadows */
+  --astral-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --astral-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --astral-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --astral-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --astral-transition-fast: 150ms ease-in-out;
+  --astral-transition-normal: 250ms ease-in-out;
+  --astral-transition-slow: 350ms ease-in-out;
+  
+  /* Z-Index Scale */
+  --astral-z-dropdown: 1000001;
+  --astral-z-sticky: 1000002;
+  --astral-z-fixed: 1000003;
+  --astral-z-modal-backdrop: 1000004;
+  --astral-z-modal: 1000005;
+  --astral-z-popover: 1000006;
+  --astral-z-tooltip: 1000007;
+  --astral-z-toast: 1000008;
+}
+
+/* ========================================
+   SCOPED COMPONENT STYLES
+   ======================================== */
+
+/* Buttons with Enhanced Specificity */
+.astraltube-scope .astraltube-btn,
+.astraltube-scope button.astraltube-btn,
+div.astraltube-scope .astraltube-btn,
+html body .astraltube-scope .astraltube-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--astral-space-2) !important;
+  padding: var(--astral-space-2) var(--astral-space-4) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--astral-radius-md) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all var(--astral-transition-fast) !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  background: var(--astral-white) !important;
+  color: var(--astral-gray-700) !important;
+  border-color: var(--astral-gray-300) !important;
+  box-shadow: var(--astral-shadow-sm) !important;
+  font-family: inherit !important;
+  min-height: 44px !important; /* Touch-friendly size */
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.astraltube-scope .astraltube-btn:hover,
+.astraltube-scope button.astraltube-btn:hover,
+div.astraltube-scope .astraltube-btn:hover {
+  background: var(--astral-gray-50) !important;
+  border-color: var(--astral-gray-400) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--astral-shadow-md) !important;
+}
+
+.astraltube-scope .astraltube-btn:active,
+.astraltube-scope button.astraltube-btn:active,
+div.astraltube-scope .astraltube-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: var(--astral-shadow-sm) !important;
+}
+
+.astraltube-scope .astraltube-btn:focus,
+.astraltube-scope button.astraltube-btn:focus,
+div.astraltube-scope .astraltube-btn:focus {
+  outline: 2px solid var(--astral-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Button Variants */
+.astraltube-scope .astraltube-btn-primary,
+.astraltube-scope button.astraltube-btn-primary {
+  background: var(--astral-gradient) !important;
+  color: var(--astral-white) !important;
+  border-color: transparent !important;
+}
+
+.astraltube-scope .astraltube-btn-primary:hover,
+.astraltube-scope button.astraltube-btn-primary:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
+}
+
+.astraltube-scope .astraltube-btn-secondary,
+.astraltube-scope button.astraltube-btn-secondary {
+  background: var(--astral-gray-100) !important;
+  color: var(--astral-gray-700) !important;
+  border-color: var(--astral-gray-200) !important;
+}
+
+/* Button Sizes */
+.astraltube-scope .astraltube-btn-sm {
+  padding: var(--astral-space-1) var(--astral-space-3) !important;
+  font-size: 12px !important;
+  min-height: 36px !important;
+}
+
+.astraltube-scope .astraltube-btn-lg {
+  padding: var(--astral-space-3) var(--astral-space-6) !important;
+  font-size: 16px !important;
+  min-height: 48px !important;
+}
+
+.astraltube-scope .astraltube-btn-icon {
+  padding: var(--astral-space-2) !important;
+  width: 44px !important; /* Touch-friendly */
+  height: 44px !important;
+}
+
+.astraltube-scope .astraltube-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: currentColor !important;
+  pointer-events: none !important;
+}
+
+/* ========================================
+   SIDEBAR STYLES WITH ENHANCED SCOPING
+   ======================================== */
+
+.astraltube-sidebar.astraltube-scope,
+div.astraltube-sidebar.astraltube-scope {
+  position: fixed !important;
+  top: 0 !important;
+  left: -400px !important;
+  width: 400px !important;
+  height: 100vh !important;
+  background: var(--astral-white) !important;
+  border-right: 1px solid var(--astral-gray-200) !important;
+  box-shadow: var(--astral-shadow-xl) !important;
+  z-index: var(--astral-z-fixed) !important;
+  transition: left var(--astral-transition-normal) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.astraltube-sidebar.astraltube-scope.open {
+  left: 0 !important;
+}
+
+/* Drag and Drop Visual Feedback */
+.astraltube-scope .astraltube-drag-feedback {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: var(--astral-z-tooltip) !important;
+  background: var(--astral-white) !important;
+  border: 2px dashed var(--astral-primary) !important;
+  border-radius: var(--astral-radius-lg) !important;
+  padding: var(--astral-space-4) !important;
+  box-shadow: var(--astral-shadow-xl) !important;
+  opacity: 0.9 !important;
+  transform: rotate(5deg) !important;
+}
+
+.astraltube-scope .astraltube-drop-zone {
+  border: 2px dashed var(--astral-gray-300) !important;
+  border-radius: var(--astral-radius-lg) !important;
+  padding: var(--astral-space-6) !important;
+  text-align: center !important;
+  color: var(--astral-gray-500) !important;
+  transition: all var(--astral-transition-fast) !important;
+  background: var(--astral-gray-50) !important;
+}
+
+.astraltube-scope .astraltube-drop-zone.drag-over {
+  border-color: var(--astral-primary) !important;
+  background: var(--astral-gradient-light) !important;
+  color: var(--astral-primary) !important;
+  box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.1) !important;
+}
+
+.astraltube-scope .astraltube-drop-zone.drag-over::before {
+  content: "Drop here to organize" !important;
+  display: block !important;
+  font-weight: 600 !important;
+  margin-bottom: var(--astral-space-2) !important;
+}
+
+/* Skeleton Loading States */
+.astraltube-scope .astraltube-skeleton {
+  background: linear-gradient(90deg, var(--astral-gray-200) 25%, var(--astral-gray-100) 50%, var(--astral-gray-200) 75%) !important;
+  background-size: 200% 100% !important;
+  animation: astralShimmer 1.5s infinite !important;
+  border-radius: var(--astral-radius-md) !important;
+}
+
+@keyframes astralShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.astraltube-scope .astraltube-skeleton-text {
+  height: 16px !important;
+  margin-bottom: var(--astral-space-2) !important;
+  border-radius: var(--astral-radius-sm) !important;
+}
+
+.astraltube-scope .astraltube-skeleton-text:last-child {
+  margin-bottom: 0 !important;
+  width: 60% !important;
+}
+
+.astraltube-scope .astraltube-skeleton-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+}
+
+.astraltube-scope .astraltube-skeleton-button {
+  height: 44px !important;
+  width: 120px !important;
+  border-radius: var(--astral-radius-md) !important;
+}
+
+.astraltube-scope .astraltube-skeleton-card {
+  padding: var(--astral-space-4) !important;
+  margin-bottom: var(--astral-space-4) !important;
+}
+
+/* Enhanced Empty States */
+.astraltube-scope .astraltube-empty-state {
+  text-align: center !important;
+  padding: var(--astral-space-8) var(--astral-space-4) !important;
+  color: var(--astral-gray-600) !important;
+}
+
+.astraltube-scope .astraltube-empty-state-icon {
+  width: 64px !important;
+  height: 64px !important;
+  margin: 0 auto var(--astral-space-4) !important;
+  opacity: 0.6 !important;
+  color: var(--astral-gray-400) !important;
+}
+
+.astraltube-scope .astraltube-empty-state h3 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-bottom: var(--astral-space-2) !important;
+  color: var(--astral-gray-900) !important;
+}
+
+.astraltube-scope .astraltube-empty-state p {
+  margin-bottom: var(--astral-space-4) !important;
+  max-width: 320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  line-height: 1.6 !important;
+}
+
+.astraltube-scope .astraltube-empty-state-actions {
+  display: flex !important;
+  gap: var(--astral-space-3) !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+/* Micro-interactions and Animations */
+.astraltube-scope .astraltube-bounce-in {
+  animation: astralBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+@keyframes astralBounceIn {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(-5deg); }
+  70% { transform: scale(0.9) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.astraltube-scope .astraltube-fade-in {
+  animation: astralFadeIn 0.4s ease-out !important;
+}
+
+@keyframes astralFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.astraltube-scope .astraltube-slide-in-left {
+  animation: astralSlideInLeft 0.3s ease-out !important;
+}
+
+@keyframes astralSlideInLeft {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+/* Enhanced Focus Management */
+.astraltube-scope [tabindex="0"]:focus,
+.astraltube-scope [tabindex="-1"]:focus,
+.astraltube-scope button:focus,
+.astraltube-scope input:focus,
+.astraltube-scope select:focus,
+.astraltube-scope textarea:focus,
+.astraltube-scope a:focus {
+  outline: 2px solid var(--astral-primary) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--astral-radius-sm) !important;
+}
+
+.astraltube-scope .astraltube-focus-trap {
+  position: relative !important;
+}
+
+.astraltube-scope .astraltube-focus-trap::before,
+.astraltube-scope .astraltube-focus-trap::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+/* Screen Reader Support */
+.astraltube-scope .astraltube-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Live Regions for Dynamic Content */
+.astraltube-scope [aria-live] {
+  position: relative !important;
+}
+
+.astraltube-scope .astraltube-status-message {
+  position: absolute !important;
+  top: -1000px !important;
+  left: -1000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .astraltube-sidebar.astraltube-scope {
+    width: 100vw !important;
+    left: -100vw !important;
+  }
+  
+  .astraltube-scope .astraltube-btn {
+    min-height: 48px !important; /* Larger touch targets */
+    padding: var(--astral-space-3) var(--astral-space-4) !important;
+  }
+  
+  .astraltube-scope .astraltube-btn-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .astraltube-scope .astraltube-btn,
+  .astraltube-scope .astraltube-sidebar {
+    border-width: 2px !important;
+  }
+  
+  .astraltube-scope [tabindex]:focus,
+  .astraltube-scope button:focus,
+  .astraltube-scope input:focus {
+    outline-width: 3px !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .astraltube-scope *,
+  .astraltube-scope *::before,
+  .astraltube-scope *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .astraltube-scope .astraltube-skeleton {
+    animation: none !important;
+    background: var(--astral-gray-200) !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .astraltube-scope {
+    --astral-white: #1f2937;
+    --astral-gray-50: #111827;
+    --astral-gray-100: #1f2937;
+    --astral-gray-200: #374151;
+    --astral-gray-300: #4b5563;
+    --astral-gray-400: #6b7280;
+    --astral-gray-500: #9ca3af;
+    --astral-gray-600: #d1d5db;
+    --astral-gray-700: #e5e7eb;
+    --astral-gray-800: #f3f4f6;
+    --astral-gray-900: #f9fafb;
+  }
+}
+
+/* Force override YouTube's aggressive styling */
+ytd-app .astraltube-scope,
+#app .astraltube-scope,
+html body ytd-app .astraltube-scope {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: var(--astral-gray-900) !important;
+  background: transparent !important;
+}
+
+/* Prevent YouTube from interfering with our modals and overlays */
+ytd-app .astraltube-scope .astraltube-modal-backdrop,
+#app .astraltube-scope .astraltube-modal-backdrop {
+  position: fixed !important;
+  z-index: 1000000 !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Ensure our content stays on top */
+.astraltube-scope {
+  z-index: 1000000 !important;
+  position: relative !important;
+}

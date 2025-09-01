@@ -1,0 +1,743 @@
+/* AstralTube v3 - Content Script Styles - Enhanced Scoping */
+
+/* Scope all AstralTube styles to prevent conflicts with YouTube */
+.astraltube-scope,
+.astraltube-scope * {
+  /* Reset all inherited styles */
+  all: unset;
+  box-sizing: border-box;
+}
+
+.astraltube-scope {
+  /* Re-establish defaults for our scope */
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111827;
+  background: transparent;
+  
+  /* AstralTube Brand Colors */
+  --astral-primary: #667eea;
+  --astral-secondary: #764ba2;
+  --astral-accent: #f093fb;
+  --astral-gradient: linear-gradient(135deg, var(--astral-primary) 0%, var(--astral-secondary) 100%);
+  
+  /* Semantic Colors */
+  --astral-success: #10b981;
+  --astral-warning: #f59e0b;
+  --astral-error: #ef4444;
+  --astral-info: #3b82f6;
+  
+  /* Neutral Colors */
+  --astral-white: #ffffff;
+  --astral-gray-50: #f9fafb;
+  --astral-gray-100: #f3f4f6;
+  --astral-gray-200: #e5e7eb;
+  --astral-gray-300: #d1d5db;
+  --astral-gray-400: #9ca3af;
+  --astral-gray-500: #6b7280;
+  --astral-gray-600: #4b5563;
+  --astral-gray-700: #374151;
+  --astral-gray-800: #1f2937;
+  --astral-gray-900: #111827;
+  
+  /* Spacing */
+  --astral-space-1: 0.25rem;
+  --astral-space-2: 0.5rem;
+  --astral-space-3: 0.75rem;
+  --astral-space-4: 1rem;
+  --astral-space-5: 1.25rem;
+  --astral-space-6: 1.5rem;
+  --astral-space-8: 2rem;
+  
+  /* Border Radius */
+  --astral-radius-sm: 0.375rem;
+  --astral-radius-md: 0.5rem;
+  --astral-radius-lg: 0.75rem;
+  --astral-radius-xl: 1rem;
+  
+  /* Shadows */
+  --astral-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --astral-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --astral-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --astral-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --astral-transition-fast: 150ms ease-in-out;
+  --astral-transition-normal: 250ms ease-in-out;
+  --astral-transition-slow: 350ms ease-in-out;
+  
+  /* Z-Index Scale */
+  --astral-z-dropdown: 1000;
+  --astral-z-sticky: 1020;
+  --astral-z-fixed: 1030;
+  --astral-z-modal-backdrop: 1040;
+  --astral-z-modal: 1050;
+  --astral-z-popover: 1060;
+  --astral-z-tooltip: 1070;
+  --astral-z-toast: 1080;
+}
+
+/* Enhanced Specificity for YouTube Integration */
+.astraltube-scope .astraltube-btn,
+.astraltube-scope button.astraltube-btn,
+div.astraltube-scope .astraltube-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--astral-space-2);
+  padding: var(--astral-space-2) var(--astral-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--astral-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--astral-transition-fast);
+  user-select: none;
+  white-space: nowrap;
+  background: var(--astral-white);
+  color: var(--astral-gray-700);
+  border-color: var(--astral-gray-300);
+  box-shadow: var(--astral-shadow-sm);
+}
+
+.astraltube-btn:hover {
+  background: var(--astral-gray-50);
+  border-color: var(--astral-gray-400);
+  transform: translateY(-1px);
+  box-shadow: var(--astral-shadow-md);
+}
+
+.astraltube-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--astral-shadow-sm);
+}
+
+.astraltube-btn:focus {
+  outline: 2px solid var(--astral-primary);
+  outline-offset: 2px;
+}
+
+/* Button Variants */
+.astraltube-btn-primary {
+  background: var(--astral-gradient);
+  color: var(--astral-white);
+  border-color: transparent;
+}
+
+.astraltube-btn-primary:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.astraltube-btn-secondary {
+  background: var(--astral-gray-100);
+  color: var(--astral-gray-700);
+  border-color: var(--astral-gray-200);
+}
+
+.astraltube-btn-success {
+  background: var(--astral-success);
+  color: var(--astral-white);
+  border-color: transparent;
+}
+
+.astraltube-btn-warning {
+  background: var(--astral-warning);
+  color: var(--astral-white);
+  border-color: transparent;
+}
+
+.astraltube-btn-error {
+  background: var(--astral-error);
+  color: var(--astral-white);
+  border-color: transparent;
+}
+
+/* Button Sizes */
+.astraltube-btn-sm {
+  padding: var(--astral-space-1) var(--astral-space-3);
+  font-size: 12px;
+}
+
+.astraltube-btn-lg {
+  padding: var(--astral-space-3) var(--astral-space-6);
+  font-size: 16px;
+}
+
+/* Icon Buttons */
+.astraltube-btn-icon {
+  padding: var(--astral-space-2);
+  width: 36px;
+  height: 36px;
+}
+
+.astraltube-btn-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Header Controls */
+.astraltube-header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--astral-space-2);
+  margin-left: var(--astral-space-4);
+}
+
+.astraltube-header-controls .astraltube-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--yt-spec-text-primary, #fff);
+}
+
+.astraltube-header-controls .astraltube-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Player Controls */
+.astraltube-player-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--astral-space-1);
+}
+
+.astraltube-player-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: var(--astral-space-2);
+  border-radius: var(--astral-radius-sm);
+  transition: background var(--astral-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.astraltube-player-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.astraltube-player-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Thumbnail Enhancements */
+.astraltube-thumbnail-overlay {
+  position: absolute;
+  top: var(--astral-space-2);
+  right: var(--astral-space-2);
+  opacity: 0;
+  transition: opacity var(--astral-transition-normal);
+  z-index: var(--astral-z-dropdown);
+}
+
+.astraltube-enhanced:hover .astraltube-thumbnail-overlay {
+  opacity: 1;
+}
+
+.astraltube-quick-actions {
+  display: flex;
+  gap: var(--astral-space-1);
+}
+
+.astraltube-quick-btn {
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: var(--astral-radius-sm);
+  color: white;
+  cursor: pointer;
+  padding: var(--astral-space-2);
+  transition: all var(--astral-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.astraltube-quick-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.astraltube-quick-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Sidebar Styles */
+.astraltube-sidebar {
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 400px;
+  height: 100vh;
+  background: var(--astral-white);
+  border-right: 1px solid var(--astral-gray-200);
+  box-shadow: var(--astral-shadow-xl);
+  z-index: var(--astral-z-fixed);
+  transition: left var(--astral-transition-normal);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.astraltube-sidebar.open {
+  left: 0;
+}
+
+.astraltube-sidebar-header {
+  padding: var(--astral-space-4);
+  border-bottom: 1px solid var(--astral-gray-200);
+  background: var(--astral-gradient);
+  color: var(--astral-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.astraltube-sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.astraltube-sidebar-close {
+  background: none;
+  border: none;
+  color: var(--astral-white);
+  cursor: pointer;
+  padding: var(--astral-space-1);
+  border-radius: var(--astral-radius-sm);
+  transition: background var(--astral-transition-fast);
+}
+
+.astraltube-sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.astraltube-sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--astral-space-4);
+}
+
+/* Deck Mode Styles */
+.astraltube-deck-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--astral-white);
+  z-index: var(--astral-z-modal);
+  display: none;
+  flex-direction: column;
+}
+
+.astraltube-deck-mode.active {
+  display: flex;
+}
+
+.astraltube-deck-header {
+  padding: var(--astral-space-4);
+  border-bottom: 1px solid var(--astral-gray-200);
+  background: var(--astral-gradient);
+  color: var(--astral-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.astraltube-deck-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.astraltube-deck-controls {
+  display: flex;
+  gap: var(--astral-space-2);
+}
+
+.astraltube-deck-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.astraltube-deck-column {
+  flex: 1;
+  border-right: 1px solid var(--astral-gray-200);
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.astraltube-deck-column:last-child {
+  border-right: none;
+}
+
+.astraltube-deck-column-header {
+  padding: var(--astral-space-3);
+  border-bottom: 1px solid var(--astral-gray-200);
+  background: var(--astral-gray-50);
+  font-weight: 600;
+}
+
+.astraltube-deck-column-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--astral-space-2);
+}
+
+/* Cards */
+.astraltube-card {
+  background: var(--astral-white);
+  border: 1px solid var(--astral-gray-200);
+  border-radius: var(--astral-radius-lg);
+  padding: var(--astral-space-4);
+  box-shadow: var(--astral-shadow-sm);
+  transition: all var(--astral-transition-fast);
+  margin-bottom: var(--astral-space-4);
+}
+
+.astraltube-card:hover {
+  box-shadow: var(--astral-shadow-md);
+  transform: translateY(-1px);
+}
+
+.astraltube-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--astral-space-3);
+}
+
+.astraltube-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--astral-gray-900);
+}
+
+.astraltube-card-content {
+  color: var(--astral-gray-700);
+  line-height: 1.6;
+}
+
+/* Form Elements */
+.astraltube-input {
+  width: 100%;
+  padding: var(--astral-space-3);
+  border: 1px solid var(--astral-gray-300);
+  border-radius: var(--astral-radius-md);
+  font-size: 14px;
+  transition: all var(--astral-transition-fast);
+  background: var(--astral-white);
+  color: var(--astral-gray-900);
+}
+
+.astraltube-input:focus {
+  outline: none;
+  border-color: var(--astral-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.astraltube-select {
+  width: 100%;
+  padding: var(--astral-space-3);
+  border: 1px solid var(--astral-gray-300);
+  border-radius: var(--astral-radius-md);
+  font-size: 14px;
+  background: var(--astral-white);
+  color: var(--astral-gray-900);
+  cursor: pointer;
+}
+
+.astraltube-textarea {
+  width: 100%;
+  padding: var(--astral-space-3);
+  border: 1px solid var(--astral-gray-300);
+  border-radius: var(--astral-radius-md);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  background: var(--astral-white);
+  color: var(--astral-gray-900);
+}
+
+/* Modals */
+.astraltube-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--astral-z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.astraltube-modal {
+  background: var(--astral-white);
+  border-radius: var(--astral-radius-xl);
+  box-shadow: var(--astral-shadow-xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: astralModalSlideIn 0.3s ease-out;
+}
+
+@keyframes astralModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.astraltube-modal-header {
+  padding: var(--astral-space-6);
+  border-bottom: 1px solid var(--astral-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.astraltube-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--astral-gray-900);
+}
+
+.astraltube-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--astral-gray-400);
+  cursor: pointer;
+  padding: var(--astral-space-1);
+  border-radius: var(--astral-radius-sm);
+  transition: all var(--astral-transition-fast);
+}
+
+.astraltube-modal-close:hover {
+  background: var(--astral-gray-100);
+  color: var(--astral-gray-600);
+}
+
+.astraltube-modal-body {
+  padding: var(--astral-space-6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.astraltube-modal-footer {
+  padding: var(--astral-space-6);
+  border-top: 1px solid var(--astral-gray-200);
+  display: flex;
+  gap: var(--astral-space-3);
+  justify-content: flex-end;
+}
+
+/* Tooltips */
+.astraltube-tooltip {
+  position: absolute;
+  background: var(--astral-gray-900);
+  color: var(--astral-white);
+  padding: var(--astral-space-2) var(--astral-space-3);
+  border-radius: var(--astral-radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: var(--astral-z-tooltip);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--astral-transition-fast);
+}
+
+.astraltube-tooltip.show {
+  opacity: 1;
+}
+
+/* Progress Bars */
+.astraltube-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--astral-gray-200);
+  border-radius: var(--astral-radius-sm);
+  overflow: hidden;
+}
+
+.astraltube-progress-bar {
+  height: 100%;
+  background: var(--astral-gradient);
+  transition: width var(--astral-transition-normal);
+  border-radius: var(--astral-radius-sm);
+}
+
+/* Badges */
+.astraltube-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--astral-space-1) var(--astral-space-2);
+  border-radius: var(--astral-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--astral-gray-100);
+  color: var(--astral-gray-700);
+}
+
+.astraltube-badge-primary {
+  background: var(--astral-primary);
+  color: var(--astral-white);
+}
+
+.astraltube-badge-success {
+  background: var(--astral-success);
+  color: var(--astral-white);
+}
+
+.astraltube-badge-warning {
+  background: var(--astral-warning);
+  color: var(--astral-white);
+}
+
+.astraltube-badge-error {
+  background: var(--astral-error);
+  color: var(--astral-white);
+}
+
+/* Loading Spinners */
+.astraltube-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--astral-gray-200);
+  border-top-color: var(--astral-primary);
+  border-radius: 50%;
+  animation: astralSpin 1s linear infinite;
+}
+
+@keyframes astralSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark Mode Support */
+[dark] .astraltube-sidebar,
+[dark] .astraltube-deck-mode,
+[dark] .astraltube-modal,
+[dark] .astraltube-card {
+  background: var(--astral-gray-900);
+  color: var(--astral-white);
+  border-color: var(--astral-gray-700);
+}
+
+[dark] .astraltube-btn {
+  background: var(--astral-gray-800);
+  color: var(--astral-white);
+  border-color: var(--astral-gray-600);
+}
+
+[dark] .astraltube-btn:hover {
+  background: var(--astral-gray-700);
+}
+
+[dark] .astraltube-input,
+[dark] .astraltube-select,
+[dark] .astraltube-textarea {
+  background: var(--astral-gray-800);
+  color: var(--astral-white);
+  border-color: var(--astral-gray-600);
+}
+
+[dark] .astraltube-deck-column-header {
+  background: var(--astral-gray-800);
+  border-color: var(--astral-gray-700);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .astraltube-sidebar {
+    width: 100vw;
+    left: -100vw;
+  }
+  
+  .astraltube-deck-column {
+    min-width: 250px;
+  }
+  
+  .astraltube-modal {
+    margin: var(--astral-space-4);
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .astraltube-header-controls {
+    margin-left: var(--astral-space-2);
+  }
+  
+  .astraltube-header-controls .astraltube-btn {
+    padding: var(--astral-space-2);
+  }
+  
+  .astraltube-header-controls .astraltube-btn span {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .astraltube-btn {
+    border-width: 2px;
+  }
+  
+  .astraltube-card {
+    border-width: 2px;
+  }
+  
+  .astraltube-input,
+  .astraltube-select,
+  .astraltube-textarea {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .astraltube-sidebar,
+  .astraltube-deck-mode,
+  .astraltube-modal-backdrop,
+  .astraltube-tooltip {
+    display: none !important;
+  }
+}

@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged for staged files
+npx lint-staged
+
+# Security audit check
+echo "🔒 Running security audit..."
+npm audit --audit-level=moderate || {
+  echo "❌ Security vulnerabilities found! Please fix them before committing."
+  exit 1
+}
+
+# Type checking (if TypeScript is present)
+if [ -f "tsconfig.json" ]; then
+  echo "🔍 Type checking..."
+  npx tsc --noEmit || {
+    echo "❌ Type errors found! Please fix them before committing."
+    exit 1
+  }
+fi
+
+# Test build to ensure no build errors
+echo "🔨 Testing build..."
+npm run build > /dev/null 2>&1 || {
+  echo "❌ Build failed! Please fix build errors before committing."
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"
